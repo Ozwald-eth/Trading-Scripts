@@ -11,12 +11,23 @@ atr_value = atr(atr_length)
 // Calculate Current Candle Value
 current_candle_value = close
 
+// Calculate Previous Candle Value
+previous_candle_value = close[1]
+
 // Add ATR to Current Candle Value
 value_with_atr = current_candle_value + atr_value
+
+// Add ATR to Previous Candle Value
+previous_value_with_atr = previous_candle_value + atr_value
 
 // Remove ATR from Current Candle Value
 value_without_atr = current_candle_value - atr_value
 
+// Remove ATR from Previous Candle Value
+previous_value_without_atr = previous_candle_value - atr_value
+
 // Plotting
-plot(value_with_atr, color=color.black, linewidth=2, title="Current Candle Value with ATR", show_last=1)
-plot(value_without_atr, color=color.black, linewidth=2, title="Current Candle Value without ATR", show_last=1)
+plot(value_with_atr, color=color.green, linewidth=2, title="Current Candle Value with ATR", show_last=1)
+plot(value_without_atr, color=color.red, linewidth=2, title="Current Candle Value without ATR", show_last=1)
+plot(previous_value_with_atr, color=color.orange, linewidth=2, title="Previous Candle Value with ATR", show_last=1)
+plot(previous_value_without_atr, color=color.purple, linewidth=2, title="Previous Candle Value without ATR", show_last=1)
