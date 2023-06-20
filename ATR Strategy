@@ -8,26 +8,28 @@ study("Bejtas Big Crazy Sauce", overlay = true)
 atr_length = input(24, title="ATR Length")
 atr_value = atr(atr_length)
 
-// Calculate Current Candle Value
-current_candle_value = close
+// Calculate Current Candle Values
+current_candle_high = high
+current_candle_low = low
 
-// Calculate Previous Candle Value
-previous_candle_value = close[1]
+// Calculate Previous Candle Values
+previous_candle_high = high[1]
+previous_candle_low = low[1]
 
-// Add ATR to Current Candle Value
-value_with_atr = current_candle_value + atr_value
+// Add ATR to Current Candle High
+value_with_atr_high = current_candle_high + atr_value
 
-// Add ATR to Previous Candle Value
-previous_value_with_atr = previous_candle_value + atr_value
+// Add ATR to Previous Candle High
+previous_value_with_atr_high = previous_candle_high + atr_value
 
-// Remove ATR from Current Candle Value
-value_without_atr = current_candle_value - atr_value
+// Remove ATR from Current Candle Low
+value_without_atr_low = current_candle_low - atr_value
 
-// Remove ATR from Previous Candle Value
-previous_value_without_atr = previous_candle_value - atr_value
+// Remove ATR from Previous Candle Low
+previous_value_without_atr_low = previous_candle_low - atr_value
 
 // Plotting
-plot(value_with_atr, color=color.green, linewidth=2, title="Current Candle Value with ATR", show_last=1)
-plot(value_without_atr, color=color.red, linewidth=2, title="Current Candle Value without ATR", show_last=1)
-plot(previous_value_with_atr, color=color.orange, linewidth=2, title="Previous Candle Value with ATR", show_last=1)
-plot(previous_value_without_atr, color=color.purple, linewidth=2, title="Previous Candle Value without ATR", show_last=1)
+plot(value_with_atr_high, color=color.black, linewidth=2, title="Current Candle High with ATR", show_last=1)
+plot(value_without_atr_low, color=color.black, linewidth=2, title="Current Candle Low without ATR", show_last=1)
+plot(previous_value_with_atr_high, color=color.blue, linewidth=2, title="Previous Candle High with ATR", show_last=1)
+plot(previous_value_without_atr_low, color=color.blue, linewidth=2, title="Previous Candle Low without ATR", show_last=1)
