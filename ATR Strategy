@@ -1,0 +1,22 @@
+// This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © ollie_oz
+
+//@version=4
+study("Bejtas Big Crazy Sauce", overlay = true)
+
+// Calculate ATR
+atr_length = input(24, title="ATR Length")
+atr_value = atr(atr_length)
+
+// Calculate Current Candle Value
+current_candle_value = close
+
+// Add ATR to Current Candle Value
+value_with_atr = current_candle_value + atr_value
+
+// Remove ATR from Current Candle Value
+value_without_atr = current_candle_value - atr_value
+
+// Plotting
+plot(value_with_atr, color=color.black, linewidth=2, title="Current Candle Value with ATR", show_last=1)
+plot(value_without_atr, color=color.black, linewidth=2, title="Current Candle Value without ATR", show_last=1)
